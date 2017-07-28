@@ -13,7 +13,7 @@ public class ParseDb {
         
         try{
 
-        File xmlFileToParse = new File("C:\\DATA\\ControllerDatabases\\");
+        File xmlFileToParse = new File("C:\\DATA\\ControllerDatabases\\BSC_339_db_11.03_ext.xml");
         DocumentBuilderFactory dbFactory
                 = DocumentBuilderFactory.newInstance();
         
@@ -23,7 +23,7 @@ public class ParseDb {
         
         System.out.println("The object is:" + doc.getDocumentElement().getNodeName());
         
-        NodeList nList  = doc.getElementsByTagName("");
+        NodeList nList  = doc.getElementsByTagName("managedObject");
         
         System.out.println("-----------------------------------");
         
@@ -32,7 +32,7 @@ public class ParseDb {
             System.out.println("\nCurrent Element :" + nNode.getNodeName());
             if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                 Element eElement = (Element) nNode;
-                System.out.println("Object:" + eElement.getAttribute("?"));
+                System.out.println("Object:" + eElement.getAttribute("managedObject"));
                 System.out.println("Object:" + eElement.getElementsByTagName("?").item(0).getTextContent());
                 System.out.println("Object:" + eElement.getElementsByTagName("?").item(0).getTextContent());
                 System.out.println("Object:" + eElement.getElementsByTagName("?").item(0).getTextContent());
