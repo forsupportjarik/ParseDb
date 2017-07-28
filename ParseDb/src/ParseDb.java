@@ -21,6 +21,23 @@ public class ParseDb {
         Document doc = dBuilder.parse(xmlFileToParse);
         doc.getDocumentElement().normalize();
         
+        System.out.println("The object is:" + doc.getDocumentElement().getNodeName());
+        
+        NodeList nList  = doc.getElementsByTagName("");
+        
+        System.out.println("-----------------------------------");
+        
+        for (int temp = 0; temp < nList.getLength(); temp++) {
+            Node nNode = nList.item(temp);
+            System.out.println("\nCurrent Element :" + nNode.getNodeName());
+            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                Element eElement = (Element) nNode;
+                System.out.println("Object:" + eElement.getAttribute("?"));
+                System.out.println("Object:" + eElement.getElementsByTagName("?").item(0).getTextContent());
+                System.out.println("Object:" + eElement.getElementsByTagName("?").item(0).getTextContent());
+                System.out.println("Object:" + eElement.getElementsByTagName("?").item(0).getTextContent());
+            }}
+        
     
 } catch (Exception e) {
 
