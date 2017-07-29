@@ -14,7 +14,7 @@ public class ParseDb {
 
         try {
 
-            File xmlFileToParse = new File("C:\\DATA\\ControllerDatabases\\BSC_339_db_11.03_ext.xml");
+            File xmlFileToParse = new File("C:\\DATA\\ControllerDatabases\\201707170701.BSC340.xml");
             DocumentBuilderFactory dbFactory
                     = DocumentBuilderFactory.newInstance();
 
@@ -33,10 +33,8 @@ public class ParseDb {
                 System.out.println("\nCurrent Element :" + nNode.getNodeName());
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) nNode;
-                    System.out.println("Object:" + eElement.getAttribute("managedObject"));
-                    System.out.println("Object:" + eElement.getElementsByTagName("?").item(0).getTextContent());
-                    System.out.println("Object:" + eElement.getElementsByTagName("?").item(0).getTextContent());
-                    System.out.println("Object:" + eElement.getElementsByTagName("?").item(0).getTextContent());
+                    System.out.println("Object:" + eElement.getAttribute("class"));
+                    System.out.println("Object:" + eElement.getElementsByTagName("item").item(0).getTextContent());
                 }
             }
 
