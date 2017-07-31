@@ -22,19 +22,21 @@ public class ParseDb {
             Document doc = dBuilder.parse(xmlFileToParse);
             doc.getDocumentElement().normalize();
 
-            System.out.println("The object is:" + doc.getDocumentElement().getNodeName());
-
             NodeList nList = doc.getElementsByTagName("managedObject");
+            NodeList nList2 = doc.getChildNodes();
+            System.out.println(nList2+"-----------------------------------------------------------------------------------" + nList);
 
-            System.out.println("-----------------------------------");
-
-            for (int temp = 0; temp < nList.getLength(); temp++) {
-                Node nNode = nList.item(temp);
-                System.out.println("\nCurrent Element :" + nNode.getNodeName());
-                if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-                    Element eElement = (Element) nNode;
-                    System.out.println("Object:" + eElement.getAttribute("class"));
-                    System.out.println("Object:" + eElement.getElementsByTagName("item").item(0).getTextContent());
+            if (nList != null) {
+                int lenght = nList.getLength();
+                for (int i = 0; i < lenght; i++) {
+                    if(nList.item(i).getNodeType() == Node.ELEMENT_NODE) {
+                        Element eElement = (Element) nList.item(i);
+                        if (eElement.getNodeName().contains("managedObject")) {
+                            String classObject = eElement.getAttribute("class");
+                            String idObject = eElement.getAttribute("id");
+                            System.out.println(classObject + ": " + idObject);
+                        }
+                    }
                 }
             }
 
