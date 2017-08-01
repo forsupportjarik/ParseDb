@@ -10,8 +10,11 @@ import org.w3c.dom.Element;
 
 public class ParseDb {
 
-    public static void main(String[] args) {
-
+    public static String [] domTechniq() {
+        
+        int lenght = 0;
+        String [] result = new String[lenght];
+        
         try {
 
             File xmlFileToParse = new File("C:\\DATA\\ControllerDatabases\\201707170701.BSC340.xml");
@@ -27,14 +30,18 @@ public class ParseDb {
             System.out.println(nList2+"-----------------------------------------------------------------------------------" + nList);
 
             if (nList != null) {
-                int lenght = nList.getLength();
+                lenght = nList.getLength();
                 for (int i = 0; i < lenght; i++) {
                     if(nList.item(i).getNodeType() == Node.ELEMENT_NODE) {
                         Element eElement = (Element) nList.item(i);
+                        
+                        
                         if (eElement.getNodeName().contains("managedObject")) {
                             String classObject = eElement.getAttribute("class");
                             String idObject = eElement.getAttribute("id");
-                            System.out.println(classObject + ": " + idObject);
+                            
+                            result[i] = classObject + ": " + idObject;
+                          //System.out.println(result[i].toString());  
                         }
                     }
                 }
@@ -45,6 +52,7 @@ public class ParseDb {
 
             e.printStackTrace();
         }
-
+        //System.out.println(lenght);
+return result;
     }
 }
