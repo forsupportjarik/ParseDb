@@ -10,38 +10,27 @@ import org.w3c.dom.Element;
 
 public class ParseDb {
 
-    public static String [] domTechniq() {
-        
-        int lenght = 0;
-        String [] result = new String[lenght];
-        
+    public static String[] domTechniq(NodeList nodeList) {
+
+        int lenght = nodeList.getLength();
+        String[] result = new String[lenght];
+
         try {
 
-            File xmlFileToParse = new File("C:\\DATA\\ControllerDatabases\\201707170701.BSC340.xml");
-            DocumentBuilderFactory dbFactory
-                    = DocumentBuilderFactory.newInstance();
 
-            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            Document doc = dBuilder.parse(xmlFileToParse);
-            doc.getDocumentElement().normalize();
-
-            NodeList nList = doc.getElementsByTagName("managedObject");
-            NodeList nList2 = doc.getChildNodes();
-            System.out.println(nList2+"-----------------------------------------------------------------------------------" + nList);
-
-            if (nList != null) {
-                lenght = nList.getLength();
+            if (nodeList != null) {
+                lenght = nodeList.getLength();
                 for (int i = 0; i < lenght; i++) {
-                    if(nList.item(i).getNodeType() == Node.ELEMENT_NODE) {
-                        Element eElement = (Element) nList.item(i);
-                        
-                        
+                    if (nodeList.item(i).getNodeType() == Node.ELEMENT_NODE) {
+                        Element eElement = (Element) nodeList.item(i);
+
+
                         if (eElement.getNodeName().contains("managedObject")) {
                             String classObject = eElement.getAttribute("class");
                             String idObject = eElement.getAttribute("id");
-                            
+
                             result[i] = classObject + ": " + idObject;
-                          //System.out.println(result[i].toString());  
+                            //System.out.println(result[i].toString());
                         }
                     }
                 }
@@ -53,6 +42,6 @@ public class ParseDb {
             e.printStackTrace();
         }
         //System.out.println(lenght);
-return result;
+        return result;
     }
 }
