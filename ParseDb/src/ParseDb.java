@@ -31,9 +31,10 @@ public class ParseDb {
                             String idObject = eElement.getAttribute("id");
                             String distName = eElement.getAttribute("distName");
                             NodeList nl = eElement.getElementsByTagName("adminState");
+                            String content = eElement.getTextContent();
 
                             String nameCellOfAdce = nl.toString();
-                            result[i] = classObject + ": " + idObject + " " + distName + " " + nameCellOfAdce;
+                            result[i] = classObject + ": " + idObject + " " + distName + " " + nameCellOfAdce + " " + content.replace("\n", "\t");
                             //System.out.println(result[i].toString());
                         }
                     }
