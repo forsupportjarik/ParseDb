@@ -4,7 +4,7 @@ public class Main {
     
     public static void main (String [] args) {
         
-        System.out.println(Arrays.toString(ParseDb.domTechniq(Utilities.accessDomDoc())));
+        System.out.println(Arrays.toString(ParseDb.domTechniq(Utilities.accessDomDoc())).replace(",", "\n"));
 
 
     }

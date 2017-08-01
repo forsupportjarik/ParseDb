@@ -1,5 +1,6 @@
 
 import java.io.File;
+import java.util.Arrays;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
 
@@ -28,8 +29,11 @@ public class ParseDb {
                         if (eElement.getNodeName().contains("managedObject")) {
                             String classObject = eElement.getAttribute("class");
                             String idObject = eElement.getAttribute("id");
+                            String distName = eElement.getAttribute("distName");
+                            NodeList nl = eElement.getElementsByTagName("adminState");
 
-                            result[i] = classObject + ": " + idObject;
+                            String nameCellOfAdce = nl.toString();
+                            result[i] = classObject + ": " + idObject + " " + distName + " " + nameCellOfAdce;
                             //System.out.println(result[i].toString());
                         }
                     }
