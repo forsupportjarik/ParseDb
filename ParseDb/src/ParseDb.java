@@ -1,9 +1,3 @@
-
-import java.io.File;
-import java.util.Arrays;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.DocumentBuilder;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
@@ -11,9 +5,14 @@ import org.w3c.dom.Element;
 
 public class ParseDb {
 
-    public static String[] domTechniq(NodeList nodeList) {
+    public static String[] domTechniq(Document doc) {
+
+        NodeList nodeList;
+
+        nodeList = doc.getElementsByTagName("managedObject");
 
         int lenght = nodeList.getLength();
+
         String[] result = new String[lenght];
 
         try {
@@ -27,15 +26,25 @@ public class ParseDb {
 
 
                         if (eElement.getNodeName().contains("managedObject")) {
+
+
+
                             String classObject = eElement.getAttribute("class");
                             String idObject = eElement.getAttribute("id");
                             String distName = eElement.getAttribute("distName");
-                            NodeList nl = eElement.getElementsByTagName("adminState");
                             String content = eElement.getTextContent();
 
-                            String nameCellOfAdce = nl.toString();
-                            result[i] = classObject + ": " + idObject + " " + distName + " " + nameCellOfAdce + " " + content.replace("\n", "\t");
-                            //System.out.println(result[i].toString());
+
+
+                            NodeList nodeList1 = eElement.getElementsByTagName("p");
+                            Element element1 = (Element)  nodeList1.item(i);
+                            NodeList nodeList2 = element1.getChildNodes();
+                            System.out.println("NAME = " + (nodeList2.item(i)).getNodeValue());
+                            String s = element1.getAttribute("name");
+                            System.out.println("NAME = " + s );
+
+                           result[i] = classObject + ": " + idObject + " " + distName + " " + content.replace("\n", "\t");
+
                         }
                     }
                 }

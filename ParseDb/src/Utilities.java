@@ -7,21 +7,19 @@ import java.io.File;
 
 public class Utilities {
 
-    public static NodeList accessDomDoc() {
+    public static Document accessDomDoc() {
 
         try {
 
             File xmlFileToParse = new File("C:\\DATA\\ControllerDatabases\\201707170701.BSC340.xml");
             DocumentBuilderFactory dbFactory
                     = DocumentBuilderFactory.newInstance();
-
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(xmlFileToParse);
             doc.getDocumentElement().normalize();
 
-            NodeList nList = doc.getElementsByTagName("managedObject");
+            return doc;
 
-            return nList;
         } catch (Exception e) {
 
             e.printStackTrace();
