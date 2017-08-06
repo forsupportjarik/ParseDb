@@ -5,6 +5,7 @@ import org.w3c.dom.NodeList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
+import java.util.Arrays;
 
 public class Utilities {
 
@@ -45,8 +46,25 @@ public class Utilities {
         return resultChildnodes;
     }
 
-    public static String[] getUniqueElements(String[] elements) {
+    public static String[] getUniqueElements(String[] elements, int length) {
 
-        return  null;
+
+        boolean isUnique = false;
+        String result[] = new String[length];
+
+        for (int i = 0; i < elements.length; i++) {
+            for (int j = 0; i < i; j++) {
+                if (elements[i] == elements[j]) {
+                    isUnique = true;
+                    break;
+                }
+            }
+            if (!isUnique) {
+                length = length + 1;
+                result[i] = elements[i];
+            }
+        }
+        System.out.println(Arrays.toString(result));
+        return result;
     }
 }
