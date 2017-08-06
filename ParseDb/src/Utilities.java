@@ -1,4 +1,5 @@
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -26,5 +27,26 @@ public class Utilities {
         }
         return null;
 
+    }
+
+    public static String[] getChildName(Element eElement, String childTag) {
+
+
+        NodeList nodeList1 = eElement.getElementsByTagName("p");
+        int contentLength = nodeList1.getLength();
+        String[] resultChildnodes = new String[contentLength];
+        for (int j = 0; j < contentLength; j++) {
+
+            Element eElement1 = (Element) nodeList1.item(j);
+            childTag = eElement1.getAttribute("name");
+            resultChildnodes[j] = childTag;
+        }
+
+        return resultChildnodes;
+    }
+
+    public static String[] getUniqueElements(String[] elements) {
+
+        return  null;
     }
 }
