@@ -9,7 +9,7 @@ public class ParseDb {
 
     public static String[] domTechniq(Document doc) {
 
-        NodeList nodeList;
+        NodeList nodeList;//
         nodeList = doc.getElementsByTagName("managedObject");
 
         int lenght = nodeList.getLength();
