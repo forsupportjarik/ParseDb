@@ -9,11 +9,23 @@ import java.util.Arrays;
 
 public class Utilities {
 
-    public static Document accessDomDoc() {
+    public static Document accessDomDoc(String [] fileNamesArray) {
+
+        String[] result = fileNamesArray;
+
+
+        String pathName = "C:\\DATA\\ControllerDatabases\\";
+
+        String fileName = null;
 
         try {
+            for (int i = 0; i < result.length; i++) {
 
-            File xmlFileToParse = new File("C:\\DATA\\ControllerDatabases\\201707170701.BSC340.xml");
+                fileName = result [i];
+
+                File xmlFileToParse = new File(pathName + fileName);
+
+
             DocumentBuilderFactory dbFactory
                     = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -21,6 +33,8 @@ public class Utilities {
             doc.getDocumentElement().normalize();
 
             return doc;
+
+            }
 
         } catch (Exception e) {
 
@@ -68,14 +82,14 @@ public class Utilities {
         return result;
     }
 
-    public String[] getFilesName(String directoryName) {
+    public static String[] getFilesName(String directoryName) {
 
 
         File file = new File(directoryName);
 
         File[] fileList = file.listFiles();
 
-        int count = file.listFiles().length - 1;
+        int count = file.listFiles().length;
 
         String[] result = new String[count];
 

@@ -14,8 +14,8 @@ public class Main {
         Utilities utilities = new Utilities();
 
 
-        fileWriter.append(Arrays.toString(utilities.getFilesName("C:\\DATA\\Mentor projects")));
-        fileWriter.append(Arrays.toString(ParseDb.domTechniq(Utilities.accessDomDoc())).replace(",", "\n"));
+        fileWriter.append(Arrays.toString(utilities.getFilesName("C:\\DATA\\ControllerDatabases\\")));
+        fileWriter.append(Arrays.toString(ParseDb.domTechniq(Utilities.accessDomDoc(Utilities.getFilesName("C:\\DATA\\ControllerDatabases")))).replace(",", "\n"));
         fileWriter.flush();
         fileWriter.close();
 
