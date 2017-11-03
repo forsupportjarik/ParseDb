@@ -12,9 +12,9 @@ public class Main {
         FileWriter fileWriter = new FileWriter(file);
 
         Utilities utilities = new Utilities();
-        utilities.getFilesName("C:\\DATA\\Mentor projects");
 
-        fileWriter.append(utilities.toString());
+
+        fileWriter.append(Arrays.toString(utilities.getFilesName("C:\\DATA\\Mentor projects")));
         fileWriter.append(Arrays.toString(ParseDb.domTechniq(Utilities.accessDomDoc())).replace(",", "\n"));
         fileWriter.flush();
         fileWriter.close();

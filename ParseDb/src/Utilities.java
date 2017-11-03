@@ -68,24 +68,29 @@ public class Utilities {
         return result;
     }
 
-    public File getFilesName (String directoryName) {
-
+    public String[] getFilesName(String directoryName) {
 
 
         File file = new File(directoryName);
 
         File[] fileList = file.listFiles();
 
-        for(int i = 0; i < fileList.length; i++) {
+        int count = file.listFiles().length - 1;
+
+        String[] result = new String[count];
+
+        for (int i = 0; i < fileList.length; i++) {
 
             if (fileList[i].isFile()) {
 
-                return fileList[i];
+                file = fileList[i];
+
+                result[i] = file.getName();
 
             }
 
         }
 
-        return null;
+        return result;
     }
 }
