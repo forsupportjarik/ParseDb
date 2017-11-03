@@ -67,4 +67,25 @@ public class Utilities {
         System.out.println(Arrays.toString(result));
         return result;
     }
+
+    public File getFilesName (String directoryName) {
+
+
+
+        File file = new File(directoryName);
+
+        File[] fileList = file.listFiles();
+
+        for(int i = 0; i < fileList.length; i++) {
+
+            if (fileList[i].isFile()) {
+
+                return fileList[i];
+
+            }
+
+        }
+
+        return null;
+    }
 }
