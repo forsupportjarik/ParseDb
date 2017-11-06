@@ -15,7 +15,13 @@ public class Main {
 
 
         fileWriter.append(Arrays.toString(utilities.getFilesName("C:\\DATA\\ControllerDatabases\\")));
-        fileWriter.append(Arrays.toString(ParseDb.domTechniq(Utilities.accessDomDoc(Utilities.getFilesName("C:\\DATA\\ControllerDatabases")))).replace(",", "\n"));
+
+        for (String fileName : Utilities.getFilesName("C:\\DATA\\ControllerDatabases")
+                ) {
+            fileWriter.append(Arrays.toString(ParseDb.domTechniq(Utilities.accessDomDoc(fileName))).replace(",", "\n"));
+
+
+        }
         fileWriter.flush();
         fileWriter.close();
 

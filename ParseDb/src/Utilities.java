@@ -9,22 +9,19 @@ import java.util.Arrays;
 
 public class Utilities {
 
-    public static Document[] accessDomDoc(String[] fileNamesArray) {
+    public static Document accessDomDoc(String fileName) {
 
-        String[] result = fileNamesArray;
+
 
 
         String pathName = "C:\\DATA\\ControllerDatabases\\";
 
-        String fileName = null;
+
 
         Document doc = null;
-        Document[] docArray = new Document[4];
+
 
         try {
-            for (int i = 0; i < result.length; i++) {
-
-                fileName = result[i];
 
                 File xmlFileToParse = new File(pathName + fileName);
 
@@ -35,15 +32,13 @@ public class Utilities {
                 doc = dBuilder.parse(xmlFileToParse);
                 doc.getDocumentElement().normalize();
 
-                docArray[i] = doc;
-            }
 
         } catch (Exception e) {
 
             e.printStackTrace();
         }
 
-        return docArray;
+        return doc;
     }
 
     public static String[] getChildName(Element eElement, String childTag) {
