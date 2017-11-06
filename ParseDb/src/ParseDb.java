@@ -7,10 +7,16 @@ import java.util.Arrays;
 
 public class ParseDb {
 
-    public static String[]  domTechniq(Document doc) {
+    public static String[] domTechniq(Document [] doc) {
 
-        NodeList nodeList;
-        nodeList = doc.getElementsByTagName("managedObject");
+
+        NodeList nodeList = null;
+
+
+        for (Document document:
+             doc) {
+            nodeList = document.getElementsByTagName("managedObject");
+        }
 
         int lenght = nodeList.getLength();
 
@@ -35,7 +41,7 @@ public class ParseDb {
                             String content = eElement.getTextContent();
 
                             result[i] = "|" + Arrays.toString(Utilities.getChildName(eElement, childTag)) + "|" + classObject + ": " + idObject + " " + distName + " " + content.replace("\n", "\t");
-Utilities.getUniqueElements(Utilities.getChildName(eElement, childTag), Utilities.getChildName(eElement, childTag).length); // sout for test of unique strings
+                            Utilities.getUniqueElements(Utilities.getChildName(eElement, childTag), Utilities.getChildName(eElement, childTag).length); // sout for test of unique strings
                         }
                     }
                 }

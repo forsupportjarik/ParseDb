@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 public class Utilities {
 
-    public static Document accessDomDoc(String [] fileNamesArray) {
+    public static Document[] accessDomDoc(String[] fileNamesArray) {
 
         String[] result = fileNamesArray;
 
@@ -18,30 +18,32 @@ public class Utilities {
 
         String fileName = null;
 
+        Document doc = null;
+        Document[] docArray = new Document[4];
+
         try {
             for (int i = 0; i < result.length; i++) {
 
-                fileName = result [i];
+                fileName = result[i];
 
                 File xmlFileToParse = new File(pathName + fileName);
 
 
-            DocumentBuilderFactory dbFactory
-                    = DocumentBuilderFactory.newInstance();
-            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            Document doc = dBuilder.parse(xmlFileToParse);
-            doc.getDocumentElement().normalize();
+                DocumentBuilderFactory dbFactory
+                        = DocumentBuilderFactory.newInstance();
+                DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+                doc = dBuilder.parse(xmlFileToParse);
+                doc.getDocumentElement().normalize();
 
-            return doc;
-
+                docArray[i] = doc;
             }
 
         } catch (Exception e) {
 
             e.printStackTrace();
         }
-        return null;
 
+        return docArray;
     }
 
     public static String[] getChildName(Element eElement, String childTag) {
