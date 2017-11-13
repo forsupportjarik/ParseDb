@@ -12,10 +12,7 @@ public class Utilities {
     public static Document accessDomDoc(String fileName) {
 
 
-
-
         String pathName = "C:\\DATA\\ControllerDatabases\\";
-
 
 
         Document doc = null;
@@ -23,14 +20,14 @@ public class Utilities {
 
         try {
 
-                File xmlFileToParse = new File(pathName + fileName);
+            File xmlFileToParse = new File(pathName + fileName);
 
 
-                DocumentBuilderFactory dbFactory
-                        = DocumentBuilderFactory.newInstance();
-                DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-                doc = dBuilder.parse(xmlFileToParse);
-                doc.getDocumentElement().normalize();
+            DocumentBuilderFactory dbFactory
+                    = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            doc = dBuilder.parse(xmlFileToParse);
+            doc.getDocumentElement().normalize();
 
 
         } catch (Exception e) {
@@ -74,6 +71,7 @@ public class Utilities {
                 length = length + 1;
                 result[i] = elements[i];
             }
+
         }
         System.out.println(Arrays.toString(result));
         return result;

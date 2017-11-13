@@ -33,13 +33,17 @@ public class ParseDb {
                             String distName = eElement.getAttribute("distName");
                             String content = eElement.getTextContent();
 
-                            result[i] = "|" + Arrays.toString(Utilities.getChildName(eElement, childTag)) + "|" + classObject + ": " + idObject + " " + distName + " " + content.replace("\n", "\t");
-                            //Utilities.getUniqueElements(Utilities.getChildName(eElement, childTag), Utilities.getChildName(eElement, childTag).length); // sout for test of unique strings
+                           // result[i] = classObject + ": " + idObject + " " + distName + " " + content.replace("\n", "\t");
+                            //result[i] = "|" + Arrays.toString(Utilities.getChildName(eElement, childTag)) + "|" + classObject + ": " + idObject + " " + distName + " " + content.replace("\n", "\t");
+
+                            result[i] = "|" + Arrays.toString(Utilities.getChildName(eElement, childTag)).replace("\n", "\t") + "|" + classObject + ": " + idObject + " " + distName + " " + content.replace("\n", "\t");
+
+
+                            Utilities.getUniqueElements(Utilities.getChildName(eElement, childTag), Utilities.getChildName(eElement, childTag).length); // sout for test of unique strings
                         }
                     }
                 }
             }
-
         } catch (Exception e) {
 
             e.printStackTrace();
