@@ -21,6 +21,13 @@ public class DatabaseCreating {
         for (String result : databaseNsnXmlObjects) {
             uniqueObjects.add(result);
         }
+
+
+
+
+
+
+
     } catch (IOException ex) {
             Logger.getLogger(DatabaseCreating.class.getName()).log(new LogRecord(Level.WARNING, "File in this directory does not exist"));
             throw new CustomExceptions(ex);
