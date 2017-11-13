@@ -1,8 +1,8 @@
 
 public class CustomExceptions extends Exception {
 
-    public CustomExceptions (Throwable error) {
-        initCause(error);
+    public CustomExceptions (Throwable ex) {
+        initCause(ex);
     }
 
 }
