@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, CustomExceptions {
 
 
         File file = new File("C:\\DATA\\Mentor projects\\ParseDb.txt");
@@ -19,14 +19,14 @@ public class Main {
         for (String fileName : Utilities.getFilesName("C:\\DATA\\ControllerDatabases")
                 ) {
             fileWriter.append(Arrays.toString(ParseDb.domTechniq(Utilities.accessDomDoc(fileName))).replace(",", "\n"));
-
+            DatabaseCreating.createDatabaseByObject(ParseDb.domTechniq(Utilities.accessDomDoc(fileName)));
 
         }
 
 
-
         fileWriter.flush();
         fileWriter.close();
+
 
         //System.out.println(Arrays.toString(ParseDb.domTechniq(Utilities.accessDomDoc())).replace(",", "\n"));
 
