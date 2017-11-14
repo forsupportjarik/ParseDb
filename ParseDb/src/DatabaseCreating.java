@@ -27,17 +27,17 @@ public class DatabaseCreating {
 
             for (String result : databaseNsnXmlObjects
                     ) {
-                objectClass = result;
-                parameterName = result;
-                startPosition = objectClass.indexOf("]|");
-                lastPosition = objectClass.lastIndexOf(":");
-                objectClass.substring(startPosition, lastPosition);
+                String objectClassToHashSet = result;
+               String parameterNameToHashSet = result;
+                startPosition = objectClassToHashSet.indexOf("]|");
+                lastPosition = objectClassToHashSet.lastIndexOf(":");
+                objectClassToHashSet.substring(startPosition, lastPosition);
 
-                startPosition = objectClass.indexOf("[");
-                lastPosition = objectClass.lastIndexOf("]");
-                parameterName.substring(startPosition, lastPosition);
+                startPosition = parameterNameToHashSet.indexOf("[");
+                lastPosition = parameterNameToHashSet.lastIndexOf("]");
+                parameterNameToHashSet.substring(startPosition, lastPosition);
 
-                uniqueObjects.add(new DatabaseObject(objectClass, parameterName));
+                uniqueObjects.add(new DatabaseObject(objectClassToHashSet, parameterNameToHashSet));
             }
 
 
